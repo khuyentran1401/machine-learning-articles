@@ -41,6 +41,8 @@ To contribute a paper, please follow the format listed below:
    * What do you like about this article? What you wish to learn more from?
    * What issues you have while trying to follow the codes or setup in the article?
    * What parts of the articles that you are puzzling about?
+   
+![image](https://github.com/khuyentran1401/machine-learning-articles/blob/master/images/Screenshot%202020-04-10%2013.47.16.png)
   
 *The general template to be used can be found [here](./ISSUE_TEMPLATE.md)*.
 * The length of the TL;DR should be enough to fit in a single tweet (~140 characters). The "ideal" TL;DR should capture the essence of the problem being solved, the solution/approach the author has taken and the results. Please try your best to help communicate the essence of the article!
