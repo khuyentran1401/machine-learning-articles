@@ -32,7 +32,7 @@ To contribute a paper, please follow the format listed below:
   * Link to the article.
   * Author/Institution (Copy this from the original article).
   
-*The general template to be used can be found [here](./ISSUE_TEMPLATE.md).
+*The general template to be used can be found [here](./ISSUE_TEMPLATE.md)*.
 * The length of the TL;DR should be enough to fit in a single tweet (~140 characters). The "ideal" TL;DR should capture the essence of the problem being solved, the solution/approach the author has taken and the results. Please try your best to help communicate the essence of the article!
 * If you are making a contribution for a specific article, please designate yourself within the Assignees of the issue. This will help us to identify who has provided content and accordingly give credit.
 * Use the Labels to tag the category of the article accordingly. (Currently only contributors are only allowed to issue those tags, thus we'll take care of the tagging when submissions have been recieved.)
