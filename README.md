@@ -2,7 +2,7 @@
 
 ## About
 
-A repository for organizing different topics of machine learning articles in the form of Github's Issues. This repository is inspired by [this Github repository](https://github.com/yutarochan/arXivTimes) on summarizing machine learning papers
+A repository for organizing different topics of machine learning articles in the form of Github's Issues. This idea is inspired by [this arXivTimes repository](https://github.com/yutarochan/arXivTimes) on summarizing machine learning papers
 
 ## Motivation
 
