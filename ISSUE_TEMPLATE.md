@@ -6,7 +6,7 @@
 
 ## Key Takeaways
 
-## Useful Snippets of Sodes
+## Useful Code Snippets
 
 ## Useful Tools
 
