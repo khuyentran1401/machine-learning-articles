@@ -26,7 +26,7 @@ Keeping track of articles in this repository comes with multiple benefits:
 
 ## How to Contribute
 
-### Content
+### Format
 To contribute a paper, please follow the format listed below:
 
 * For articles that you would like to contribute, please create a new "Issue". **A template will be created** as you create a new issue. All you need is to fill in the section
@@ -47,7 +47,7 @@ To contribute a paper, please follow the format listed below:
 ![image](https://github.com/khuyentran1401/machine-learning-articles/blob/master/images/Screenshot%202020-04-10%2013.47.16.png)
 
 
-### Format  
+### Tips  
 * The length of the TL;DR should be enough to **fit in a single tweet** (~140 characters). The "ideal" TL;DR should capture the essence of the problem being solved, the solution/approach the author has taken and the results. Please try your best to help communicate the essence of the article!
 * Remember, regard this as your own folder. **Just write down the things that you think will be useful for yourself to look back!** If an article has many pieces of information, some of which you already know and too lazy to write down in the template. Just write down whatever you feel like writing. It is better to write something than give it up all the way
 * If you are making a contribution for a specific article, please designate yourself within the **Assignees** of the issue. This will help us to identify who has provided content and accordingly give credit.
