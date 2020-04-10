@@ -4,6 +4,8 @@
 
 A repository for organizing different topics of machine learning articles in the form of Github's Issues. This idea is inspired by [this arXivTimes repository](https://github.com/yutarochan/arXivTimes) on summarizing machine learning papers
 
+![image](https://github.com/khuyentran1401/machine-learning-articles/blob/master/images/Screenshot%202020-04-10%2013.15.39.png?raw=True)
+
 ## Motivation
 
 Have you ever read an interesting article and want to keep it somewhere for future reference? If you are successfully keeping it in a folder, it will be easily forgetten and hard to find that particular article in your pile of articles.   
@@ -18,8 +20,9 @@ Keeping track of articles in this repository comes with multiple benefits:
 * Keep track and organized your articles so that it is find your article for future reference
 * Quickly review the key points of the articles without reading the whole articles
 * The art of summarizing will help you to retain and comprehend the information better
-* Save the time of going through low-quality article by looking at the articles others contribute
+* Save the time of going through low-quality article by looking at the articles others enjoy
 * Ask questions or express your opinons on the articles in the comment section of Issues
+![image](https://github.com/khuyentran1401/machine-learning-articles/blob/master/images/Screenshot%202020-04-10%2013.16.33.png)
 
 ## How to Contribute
 
@@ -27,10 +30,17 @@ To contribute a paper, please follow the format listed below:
 
 * For articles that you would like to contribute, please create a new "Issue".
 * Use the name of the article as the title of the Issues.
-* Use the following guidelines when submitting a new entry (please follow the template strictly!):
+* Use the following guidelines when submitting a new entry (Feel free to skip any section that is not relevant to what you are looking for):
   * TL;DR - A quick short sentence summary of the paper.
   * Link to the article.
-  * Author/Institution (Copy this from the original article).
+  * Author.
+  * Key Takeaways - parts of the articles that you find useful.
+  * Useful Code Snippets - useful codes that you want to save for later
+  * Useful Tools - useful tools that you want to try out or integrate into your workflow
+  * Comments/Questions - Your thoughts or questions on the articles. 
+   * What do you like about this article? What you wish to learn more from?
+   * What issues you have while trying to follow the codes or setup in the article?
+   * What parts of the articles that you are puzzling about?
   
 *The general template to be used can be found [here](./ISSUE_TEMPLATE.md)*.
 * The length of the TL;DR should be enough to fit in a single tweet (~140 characters). The "ideal" TL;DR should capture the essence of the problem being solved, the solution/approach the author has taken and the results. Please try your best to help communicate the essence of the article!
