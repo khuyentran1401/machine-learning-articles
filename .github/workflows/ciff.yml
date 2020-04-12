@@ -22,3 +22,12 @@ jobs:
         git add .
         git commit --allow-empty -am "Update workflow"
         git push origin HEAD:master
+
+    - name: Create Issue From File
+      uses: peter-evans/create-issue-from-file@v2
+      with:
+        title: "Preprocessing with sklearn: a complete and comprehensive guide"
+        content-filepath: "./issues/issue_19.md"
+        labels: 
+        project: Machine Learning Articles
+        project-column: To do
