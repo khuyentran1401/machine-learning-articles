@@ -1,21 +1,18 @@
 ## TL;DR
-A cool visualization demonstration of neural network
-
-![image](http://jalammar.github.io/images/lines_and_errors_animated.gif)
+Tutorial on how to create neural style transfer with OpenCV
 
 ### Article Link
-http://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
+https://www.pyimagesearch.com/2018/08/27/neural-style-transfer-with-opencv/
 
 ### Author
-Jalammar
+Adrian Rosebrock 
 
 ## Key Takeaways
-*  Visualization of neural networks can be useful to understand the concept as well as choose the parameters for the networks
 
 ## Useful Code Snippets
 
 ## Useful Tools
+*  OpenCV
 
 ## Comments/ Questions
-* Can use this to choose the parameters for our model
-* How can we create something similar for our deep learning model and should we? How easy it is to create something like this? 
+* Easy to follow and create your own neural style transfer!

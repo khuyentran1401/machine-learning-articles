@@ -1,19 +1,20 @@
 ## TL;DR
-How to scrape the flight data
-
+Cool applications of RNN 
 ### Article Link
-https://towardsdatascience.com/scraping-flight-data-using-python-e71b97e859d3
-
+http://karpathy.github.io/2015/05/21/rnn-effectiveness/
 ### Author
-Gregor Hesse
-
+Karpathy
 ## Key Takeaways
+RNN can:
+*  Create Shakepeare!
+*  Create Wikipedia articles!
+* Create valid XML
+* Create Latex
+* We can see how the neural network gets better at generating samples over time and visualize!
 
 ## Useful Code Snippets
 
 ## Useful Tools
-*  Selenium
-*  BeautifulSoup
 
 ## Comments/ Questions
-* Easy way to scrape data of flight, which could be used for other websites
+* What are other useful things we can create with RNN?

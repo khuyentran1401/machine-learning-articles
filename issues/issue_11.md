@@ -1,20 +1,21 @@
 ## TL;DR
-Cool applications of RNN 
+A cool visualization demonstration of neural network
+
+![image](http://jalammar.github.io/images/lines_and_errors_animated.gif)
+
 ### Article Link
-http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+http://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
+
 ### Author
-Karpathy
+Jalammar
+
 ## Key Takeaways
-RNN can:
-*  Create Shakepeare!
-*  Create Wikipedia articles!
-* Create valid XML
-* Create Latex
-* We can see how the neural network gets better at generating samples over time and visualize!
+*  Visualization of neural networks can be useful to understand the concept as well as choose the parameters for the networks
 
 ## Useful Code Snippets
 
 ## Useful Tools
 
 ## Comments/ Questions
-* What are other useful things we can create with RNN?
+* Can use this to choose the parameters for our model
+* How can we create something similar for our deep learning model and should we? How easy it is to create something like this? 
