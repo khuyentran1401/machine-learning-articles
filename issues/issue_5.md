@@ -1,4 +1,5 @@
 ## TL;DR
+<<<<<<< HEAD
 Stacking or Stacked Generalization is an ensemble machine learning algorithm, using a meta-learning algorithm to learn how to best combine the predictions from two or more base machine learning algorithms
 ### Article Link
 https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/
@@ -7,6 +8,20 @@ Jason Brownlee
 ## Key Takeaways
 *  Stacking combines well-performing models on a classification or regression task and make predictions that have better performance than any single model in the ensemble.
 *  Compare between different machine learning models and choose the best model
+=======
+Interactively synthesize faces with simple techniques
+![image](https://miro.medium.com/max/1400/0*kqTo76YSl92YkYDV)
+### Article Link
+https://towardsdatascience.com/build-an-app-to-synthesize-photorealistic-faces-using-tensorflow-and-streamlit-dd2545828021
+
+### Author
+Adrien Treuille
+
+## Key Takeaways
+* Make interactive models with Streamlit
+* Synthesize face with TensorFlow
+* Use GAN to change the faces
+>>>>>>> 3a848a5b5940b78e03566184dfe0828f86b77e02
 
 ## Useful Code Snippets
 ```python
@@ -61,6 +76,14 @@ pyplot.show()
 
 ```
 
+
 ## Useful Tools
+*  Streamlit
+*  TensorFlow
+* GAN
 
 ## Comments/ Questions
+<<<<<<< HEAD
+=======
+* Would it be easy and interesting to use Streamlit to create our own application for our machine learning model?
+>>>>>>> 3a848a5b5940b78e03566184dfe0828f86b77e02
