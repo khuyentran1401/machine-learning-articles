@@ -1,24 +1,19 @@
 ## TL;DR
-Interactively synthesize faces with simple techniques
-![image](https://miro.medium.com/max/1400/0*kqTo76YSl92YkYDV)
+Use DVC for versioning large data files
+
 ### Article Link
-https://towardsdatascience.com/build-an-app-to-synthesize-photorealistic-faces-using-tensorflow-and-streamlit-dd2545828021
+https://blog.usejournal.com/version-control-for-data-science-tracking-your-machine-learning-models-and-datasets-aaa61f20bb45
 
 ### Author
-Adrien Treuille
+Vipul J
 
 ## Key Takeaways
-* Make interactive models with Streamlit
-* Synthesize face with TensorFlow
-* Use GAN to change the faces
+*  Make it easy to track the artifacts, which is important for reproducibility
 
 ## Useful Code Snippets
 
-
 ## Useful Tools
-*  Streamlit
-*  TensorFlow
-* GAN
+*  DVC
 
 ## Comments/ Questions
-* Would it be easy and interesting to use Streamlit to create our own application for our machine learning model?
+* Are you using DVC? If yes, how do you integrate it into your data science practice?

@@ -1,19 +1,24 @@
 ## TL;DR
-How to scrape the flight data
-
+Interactively synthesize faces with simple techniques
+![image](https://miro.medium.com/max/1400/0*kqTo76YSl92YkYDV)
 ### Article Link
-https://towardsdatascience.com/scraping-flight-data-using-python-e71b97e859d3
+https://towardsdatascience.com/build-an-app-to-synthesize-photorealistic-faces-using-tensorflow-and-streamlit-dd2545828021
 
 ### Author
-Gregor Hesse
+Adrien Treuille
 
 ## Key Takeaways
+* Make interactive models with Streamlit
+* Synthesize face with TensorFlow
+* Use GAN to change the faces
 
 ## Useful Code Snippets
 
+
 ## Useful Tools
-*  Selenium
-*  BeautifulSoup
+*  Streamlit
+*  TensorFlow
+* GAN
 
 ## Comments/ Questions
-* Easy way to scrape data of flight, which could be used for other websites
+* Would it be easy and interesting to use Streamlit to create our own application for our machine learning model?

@@ -1,21 +1,21 @@
 ## TL;DR
-Tools to visualize your data and plot in Jupyter Notebook interactively
+A cool visualization demonstration of neural network
+
+![image](http://jalammar.github.io/images/lines_and_errors_animated.gif)
 
 ### Article Link
-https://towardsdatascience.com/jupyter-superpower-interactive-visualization-combo-with-python-ffc0adb37b7b
+http://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
 
 ### Author
+Jalammar
 
 ## Key Takeaways
+*  Visualization of neural networks can be useful to understand the concept as well as choose the parameters for the networks
 
 ## Useful Code Snippets
-```python
-import qgrid
-gqrid_widget = qgrid.show_grid(cars)
-
-```
 
 ## Useful Tools
-*  `qgrid` let you have an Excel-like table inside Jupyter Notebook/Lab
 
 ## Comments/ Questions
+* Can use this to choose the parameters for our model
+* How can we create something similar for our deep learning model and should we? How easy it is to create something like this? 

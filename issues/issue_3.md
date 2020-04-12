@@ -1,20 +1,18 @@
 ## TL;DR
-Cool applications of RNN 
+Tutorial on how to create neural style transfer with OpenCV
+
 ### Article Link
-http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+https://www.pyimagesearch.com/2018/08/27/neural-style-transfer-with-opencv/
+
 ### Author
-Karpathy
+Adrian Rosebrock 
+
 ## Key Takeaways
-RNN can:
-*  Create Shakepeare!
-*  Create Wikipedia articles!
-* Create valid XML
-* Create Latex
-* We can see how the neural network gets better at generating samples over time and visualize!
 
 ## Useful Code Snippets
 
 ## Useful Tools
+*  OpenCV
 
 ## Comments/ Questions
-* What are other useful things we can create with RNN?
+* Easy to follow and create your own neural style transfer!

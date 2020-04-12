@@ -1,35 +1,21 @@
 ## TL;DR
-This article looks at how to tokenize and prepare text data with TensorFlow and Keras preprocessing tools 
+Tools to visualize your data and plot in Jupyter Notebook interactively
 
 ### Article Link
-https://www.kdnuggets.com/2020/03/tensorflow-keras-tokenization-text-data-prep.html
+https://towardsdatascience.com/jupyter-superpower-interactive-visualization-combo-with-python-ffc0adb37b7b
 
 ### Author
-Matthew Mayo
 
 ## Key Takeaways
 
 ## Useful Code Snippets
 ```python
-# Tokenize our training data
-tokenizer = Tokenizer(num_words=num_words, oov_token=oov_token)
-tokenizer.fit_on_texts(train_data)
+import qgrid
+gqrid_widget = qgrid.show_grid(cars)
 
-# Get our training data word index
-word_index = tokenizer.word_index
-
-# Encode training data sentences into sequences
-train_sequences = tokenizer.texts_to_sequences(train_data)
-
-# Get max training sequence length
-maxlen = max([len(x) for x in train_sequences])
-
-# Pad the training sequences
-train_padded = pad_sequences(train_sequences, padding=pad_type, truncating=trunc_type, maxlen=maxlen)
 ```
 
 ## Useful Tools
-* Keras
-* TensorFlow
+*  `qgrid` let you have an Excel-like table inside Jupyter Notebook/Lab
 
 ## Comments/ Questions

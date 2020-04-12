@@ -1,19 +1,33 @@
 ## TL;DR
-Use DVC for versioning large data files
+Useful Git commands
 
 ### Article Link
-https://blog.usejournal.com/version-control-for-data-science-tracking-your-machine-learning-models-and-datasets-aaa61f20bb45
+https://levelup.gitconnected.com/learning-git-shortcuts-1267fb689f4a
 
 ### Author
-Vipul J
+Marco Antonio Ghiani
 
 ## Key Takeaways
-*  Make it easy to track the artifacts, which is important for reproducibility
+* Make it easy to create edit committed files
+* Create a .zip of your repo
 
 ## Useful Code Snippets
+```
+# Add files to a previous commit
+git commit --amend --no-edit
 
-## Useful Tools
-*  DVC
+// We have 3 files ==> file1, file2, file3
+git add file1 file2
+git commit -m "first 3 files"
+// Doh!
+git add file3
+git commend
+// Quickly solved!
+
+commend = commit --amend --no-edit
+
+```
+
+## Useful Tools 
 
 ## Comments/ Questions
-* Are you using DVC? If yes, how do you integrate it into your data science practice?

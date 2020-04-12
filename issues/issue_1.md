@@ -1,52 +1,22 @@
 ## TL;DR
-The basis to build a customized model in Scikit-learn, it is like writing a Python class
+Overview about types of classification tasks and which algorithms to use with each task
 
 ### Article Link
-https://towardsdatascience.com/building-a-custom-model-in-scikit-learn-b0da965a1299
+https://machinelearningmastery.com/types-of-classification-in-machine-learning/
 
 ### Author
-Tim Book
+Jason Brownlee
 
 ## Key Takeaways
-* You can create you customized model, the methods that every Scikit-learn model has are:
-  * .fit()
-  * .predict()
-  * .score()
-  * .set_params()
-  * .get_params()
-
-* You can add all other methods you can imagine.
+4 main type of classification tasks
+* Binary Classification: 0 or 1
+* Multi-Class Classification: model predicts the probability of an example belonging to each class label.
+* Multi-Label Classification: classification tasks that have two or more class labels, where one or more class labels may be predicted for each example.
+* Imbalanced Classification: classification tasks where the number of examples in each class is unequally distributed.
 
 ## Useful Code Snippets
-```python
-from self.preprocessing import OneHotEncoder
-class KMeansTransformer(TransformerMixin):
-    def __init__(self, *args, **args):
-        self.model = KMeans(*args, **args)
-    def fit(self, X):
-        self.X = X
-        self.model.fit(X)
-    def transform(self, X):
-        # Need to reshape into a column vector in order to use
-        # the onehot encoder.
-        cl = self.model.predict(X).reshape(-1, 1)
-        
-        self.oh = OneHotEncoder(
-            categories="auto", 
-            sparse=False,
-            drop="first"
-        )
-        cl_matrix = self.oh.fit_transform(cl)      
- 
-        return np.hstack([self.X, cl_matrix])
-    def fit_transform(self, X, y=None):
-        self.fit(X)
-        return self.transform(X)
 
-```
 
 ## Useful Tools
-* 
-* 
 
 ## Comments/ Questions

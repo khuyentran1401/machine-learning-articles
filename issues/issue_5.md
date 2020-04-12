@@ -1,38 +1,66 @@
 ## TL;DR
-An efficient workflow for data science
-
+Stacking or Stacked Generalization is an ensemble machine learning algorithm, using a meta-learning algorithm to learn how to best combine the predictions from two or more base machine learning algorithms
 ### Article Link
-https://towardsdatascience.com/good-coding-practices-for-data-science-e9237783784c
-
+https://machinelearningmastery.com/stacking-ensemble-machine-learning-with-python/
 ### Author
-
+Jason Brownlee
 ## Key Takeaways
-### Code organization
-* **Specification Files**: Files to specify various parameters for the code (YAML or JSON). Benefit: use the code in different ways with no code changes
-* **Utilities**: Save the files that are reproducible and generic for future projects. 
-*  **Core Functionality**: Separate the pipeline of your project into different files (data extraction, data exploration, data engineering, modeling). Benefit: Easy to change and manipulate the file without running the entire code. Organize your projects for easy reviewing
-* **Main Executable**: `main.py` for execute the entire code. Should be short for someone else to understand how pieces of files are integrated together
-
-### Documentation
-Maintain a **Readme page** for keeping track of the code changes. Useful for others to look at your code and understand how to use it.  
-
-### Commenting
-Comment on the top of every file for you to organize and for reader to understand the function of the files
-
-### Version Control
-Benefits: collaborations, can switch back to the older version. Useful for experimenting, editing, and comparing different versions
-
-### Automated testing
-Use unittest to validate the functionality of different parts of the code
+*  Stacking combines well-performing models on a classification or regression task and make predictions that have better performance than any single model in the ensemble.
+*  Compare between different machine learning models and choose the best model
 
 ## Useful Code Snippets
+```python
+# compare standalone models for binary classification
+from numpy import mean
+from numpy import std
+from sklearn.datasets import make_classification
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from matplotlib import pyplot
+ 
+# get the dataset
+def get_dataset():
+	X, y = make_classification(n_samples=1000, n_features=20, n_informative=15, n_redundant=5, random_state=1)
+	return X, y
+ 
+# get a list of models to evaluate
+def get_models():
+	models = dict()
+	models['lr'] = LogisticRegression()
+	models['knn'] = KNeighborsClassifier()
+	models['cart'] = DecisionTreeClassifier()
+	models['svm'] = SVC()
+	models['bayes'] = GaussianNB()
+	return models
+ 
+# evaluate a given model using cross-validation
+def evaluate_model(model):
+	cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+	scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, error_score='raise')
+	return scores
+ 
+# define dataset
+X, y = get_dataset()
+# get the models to evaluate
+models = get_models()
+# evaluate the models and store results
+results, names = list(), list()
+for name, model in models.items():
+	scores = evaluate_model(model)
+	results.append(scores)
+	names.append(name)
+	print('>%s %.3f (%.3f)' % (name, mean(scores), std(scores)))
+# plot model performance for comparison
+pyplot.boxplot(results, labels=names, showmeans=True)
+pyplot.show()
+
+```
 
 ## Useful Tools
 
 ## Comments/ Questions
-* Knowing these helpful techniques, we should gradually adopt these practices for efficient project management
-* Things that we could add into this workflow:
-
-1. Mectrics and logging to keep track of metrics and data with [MlFlow](https://mlflow.org/)
-1. A tool to easily create a comprehensible config with [Hydra.cc](https://hydra.cc/)
-1. If the workflow of one project seems to be efficient to us, we can create a template with [Cookiecutter](https://github.com/cookiecutter/cookiecutter)
