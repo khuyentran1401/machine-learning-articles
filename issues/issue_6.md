@@ -1,4 +1,5 @@
 ## TL;DR
+<<<<<<< HEAD
 An efficient workflow for data science
 
 ### Article Link
@@ -36,3 +37,23 @@ Use unittest to validate the functionality of different parts of the code
 1. Mectrics and logging to keep track of metrics and data with [MlFlow](https://mlflow.org/)
 1. A tool to easily create a comprehensible config with [Hydra.cc](https://hydra.cc/)
 1. If the workflow of one project seems to be efficient to us, we can create a template with [Cookiecutter](https://github.com/cookiecutter/cookiecutter)
+=======
+Use DVC for versioning large data files
+
+### Article Link
+https://blog.usejournal.com/version-control-for-data-science-tracking-your-machine-learning-models-and-datasets-aaa61f20bb45
+
+### Author
+Vipul J
+
+## Key Takeaways
+*  Make it easy to track the artifacts, which is important for reproducibility
+
+## Useful Code Snippets
+
+## Useful Tools
+*  DVC
+
+## Comments/ Questions
+* Are you using DVC? If yes, how do you integrate it into your data science practice?
+>>>>>>> 3a848a5b5940b78e03566184dfe0828f86b77e02
