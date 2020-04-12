@@ -1,4 +1,5 @@
-I name: Create Issues
+
+name: Create Issues
 
 on: 
   release:
@@ -21,4 +22,3 @@ jobs:
         git add .
         git commit --allow-empty -am "Update workflow"
         git push origin HEAD:master
-
