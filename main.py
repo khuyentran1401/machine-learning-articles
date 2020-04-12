@@ -35,8 +35,12 @@ jobs:
 """
 
 dir_issues = Path('issues')
+issues_files = []
 if not dir_issues.is_dir():
     dir_issues.mkdir()
+else:
+    issues_files= [int(file.stem.split('_')[1])
+                   for file in Path().glob(f'{dir_issues}/issue_*.md')]
 
 file_name = 'ciff.yml'
 
@@ -44,17 +48,19 @@ with open(file_name, 'w') as file_yml:
     file_yml.write(WORKFLOW_TEMPLATE)
 
 file_yml = open(file_name, 'a+')
-for idx , issue in enumerate(issues):
-    title = issue.get('title')
-    file_name = f'issue_{idx + 1}'
-    user = issue.get('user').get('login')
-    labels = ", ".join(lab.get('name') for lab in issue.get('labels'))
-    body = issue.get('body')
-    
-    with open(f'{dir_issues}/{file_name}.md', 'w') as file_md:
-        file_md.write(body)
-        
-    JOB_TEMPLATE = f"""
+for issue in issues:
+    number = issue.get('number')
+    if not number in issues_files:
+        title = issue.get('title')
+        file_name = f'issue_{number}'
+        user = issue.get('user').get('login')
+        labels = ", ".join(lab.get('name') for lab in issue.get('labels'))
+        body = issue.get('body')
+
+        with open(f'{dir_issues}/{file_name}.md', 'w') as file_md:
+            file_md.write(body)
+
+        JOB_TEMPLATE = f"""
     - name: Create Issue From File
       uses: peter-evans/create-issue-from-file@v2
       with:
@@ -64,7 +70,6 @@ for idx , issue in enumerate(issues):
         project: Machine Learning Articles
         project-column: To do
 """
-        
-    file_yml.write(JOB_TEMPLATE)
+        file_yml.write(JOB_TEMPLATE)
     
 file_yml.close()
