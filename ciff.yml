@@ -138,4 +138,4 @@ jobs:
         content-filepath: "./issues/issue_13.md"
         labels: NLP, TensorFlow
         project: Machine Learning Articles
-        project-column: To do
+
