@@ -26,17 +26,8 @@ jobs:
     - name: Create Issue From File
       uses: peter-evans/create-issue-from-file@v2
       with:
-        title: "How to Use MLflow To Reproduce Results and Retrain Saved Keras ML Models"
-        content-filepath: "./issues/issue_16.md"
-        labels: Data Science Tools, Machine Learning Models
-        project: Machine Learning Articles
-        project-column: To do
-
-    - name: Create Issue From File
-      uses: peter-evans/create-issue-from-file@v2
-      with:
-        title: "4 Types of Classification Tasks in Machine Learning"
-        content-filepath: "./issues/issue_15.md"
-        labels: Machine Learning Models
+        title: "Preprocessing with sklearn: a complete and comprehensive guide"
+        content-filepath: "./issues/issue_19.md"
+        labels: 
         project: Machine Learning Articles
         project-column: To do
