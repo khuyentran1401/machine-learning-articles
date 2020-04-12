@@ -56,10 +56,6 @@ jobs:
         title: "The Unreasonable Effectiveness of Recurrent Neural Networks"
         content-filepath: "./issues/issue_4.md"
         labels: NLP
-
-        title: "How to Use MLflow To Reproduce Results and Retrain Saved Keras ML Models"
-        content-filepath: "./issues/issue_16.md"
-        labels: Data Science Tools, Machine Learning Models
         project: Machine Learning Articles
         project-column: To do
 
@@ -143,10 +139,3 @@ jobs:
         labels: NLP, TensorFlow
         project: Machine Learning Articles
         project-column: To do
-=======
-        title: "4 Types of Classification Tasks in Machine Learning"
-        content-filepath: "./issues/issue_15.md"
-        labels: Machine Learning Models
-        project: Machine Learning Articles
-        project-column: To do
->>>>>>> 3a848a5b5940b78e03566184dfe0828f86b77e02
