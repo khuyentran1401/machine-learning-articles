@@ -54,9 +54,17 @@ To contribute a paper, please follow the format listed below:
 * Use the **Labels to tag the category** of the article accordingly. (Currently only contributors are only allowed to issue those tags, thus we'll take care of the tagging when submissions have been recieved.)
 * Use the comments section as a place to discuss, comment, ask questions or give feedback on the article.
 
+### Ideas for those who make fork, create Issues from origin
+1. Fork repository 
+2. Enable Issues in Settings -> Issues
+3. Run main.py
+4. Add/Copy workflow ciff.yml to .github/workflows
+5. Create one release: v1.0.0
+
 ### How to
 #### Add image
 Adding image can be helpful to know what the article about. Simply copy the address of the image in the website and use `![image description](link to the image)` to add image to your issue!
+
 
 *For proposing any meta-level changes to this repository, such as adding more tags, changing the template format, please create a new issue using the `proposal` tag and provide us with your feedback!*
 
