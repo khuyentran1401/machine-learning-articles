@@ -1,5 +1,4 @@
 ## TL;DR
-<<<<<<< HEAD
 The basis to build a customized model in Scikit-learn, it is like writing a Python class
 
 ### Article Link
@@ -7,14 +6,6 @@ https://towardsdatascience.com/building-a-custom-model-in-scikit-learn-b0da965a1
 
 ### Author
 Tim Book
-=======
-Tools to visualize your data and plot in Jupyter Notebook interactively
-
-### Article Link
-https://towardsdatascience.com/jupyter-superpower-interactive-visualization-combo-with-python-ffc0adb37b7b
-
-### Author
->>>>>>> 3a848a5b5940b78e03566184dfe0828f86b77e02
 
 ## Key Takeaways
 * You can create you customized model, the methods that every Scikit-learn model has are:
@@ -28,7 +19,6 @@ https://towardsdatascience.com/jupyter-superpower-interactive-visualization-comb
 
 ## Useful Code Snippets
 ```python
-<<<<<<< HEAD
 from self.preprocessing import OneHotEncoder
 class KMeansTransformer(TransformerMixin):
     def __init__(self, *args, **args):
@@ -52,19 +42,11 @@ class KMeansTransformer(TransformerMixin):
     def fit_transform(self, X, y=None):
         self.fit(X)
         return self.transform(X)
-=======
-import qgrid
-gqrid_widget = qgrid.show_grid(cars)
->>>>>>> 3a848a5b5940b78e03566184dfe0828f86b77e02
 
 ```
 
 ## Useful Tools
-<<<<<<< HEAD
 * 
 * 
-=======
-*  `qgrid` let you have an Excel-like table inside Jupyter Notebook/Lab
->>>>>>> 3a848a5b5940b78e03566184dfe0828f86b77e02
 
 ## Comments/ Questions
