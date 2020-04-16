@@ -1,26 +1,34 @@
 
 name: Create Issues
 
-on: 
+on:
+  pull_request:
+    branches:
+      - master
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     - name: Set up Python
       uses: actions/setup-python@v1
-    - name: Fetch Issues from repository
+    - name: Run main.py and Copy new Workflow 
       shell: bash
       run: |
         pip install -r requirements.txt
         python main.py
+        cp -f ciff.yml .github/workflows/
         git config --global user.name 'oleksis'
         git config --global user.email 'oleksis.fraga@gmail.com'
         git add .
         git commit --allow-empty -am "Update workflow"
-        git push origin HEAD:master
-
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ACTIONS_SECRET }}
 
