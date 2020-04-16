@@ -32,3 +32,21 @@ jobs:
       with:
         github_token: ${{ secrets.ACTIONS_SECRET }}
 
+
+    - name: Create Issue From File
+      uses: peter-evans/create-issue-from-file@v2
+      with:
+        title: "Object-oriented programming for data scientists: Build your ML estimator"
+        content-filepath: "./issues/issue_25.md"
+        labels: Data Science Tips, Python
+        project: Machine Learning Articles
+        project-column: To do
+
+    - name: Create Issue From File
+      uses: peter-evans/create-issue-from-file@v2
+      with:
+        title: "Top 10 Magic Commands in Python to Boost your Productivity"
+        content-filepath: "./issues/issue_24.md"
+        labels: Data Science Tools, Jupyter Notebook
+        project: Machine Learning Articles
+        project-column: To do
