@@ -32,3 +32,13 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.ACTIONS_SECRET }}
+
+
+    - name: Create Issue From File
+      uses: peter-evans/create-issue-from-file@v2
+      with:
+        title: "Understanding emotions - from Keras to pyTorch"
+        content-filepath: "./build/issues/issue_27.md"
+        labels: 
+        project: Machine Learning Articles
+        project-column: To do
