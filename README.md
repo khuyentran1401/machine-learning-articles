@@ -56,10 +56,25 @@ To contribute a paper, please follow the format listed below:
 
 ### Ideas for those who make fork, create Issues from origin
 1. Fork repository 
-2. Enable Issues in Settings -> Issues
-3. Run main.py
-4. Add/Copy workflow ciff.yml to .github/workflows
-5. Create one release: v1.0.0
+2. Enable Issues in **Settings -> Issues**
+
+    The steps 1 and 2 need be manual
+
+3. Check GitHub-App permissions on **.github/workflows** we need set **Personal Access Token** (PAT):
+    * **[Your Profile](https://github.com/settings/profile) -> Settings**
+    * **Developers -> Personal access token**
+    * Add new Token (copy for use in Secrets)
+      Make sure set the _**scopes**_: **repo, workflow**
+      Ex: Machine Learning Articles Access — repo, workflow
+
+    3.1 Settings your Repo:
+     * **Settings -> Secrets**
+     * Add a new secret:
+       **ACTIONS_SECRET** : `<paste personal access token generated before>`
+
+4. Create one **pre-release: v0.1-alpha** (Create the Issues in issues folder and update ciff.yml workflow)
+5. Create final r**elease: v1.0.0** (Importar Issues to the repository)
+    * _**Optional**_ you can create one Project(machine-learning-articles/projects) named **Machine Learning Articles** (**To do** , **In progress**, **Done**) for manage the [Issues](https://github.com/oleksis/machine-learning-articles/projects/1)
 
 ### How to
 #### Add image
