@@ -6,7 +6,9 @@ import requests
 # Machine Learning Articles
 URL_REPO_ISSUES = 'https://api.github.com/repos/khuyentran1401/machine-learning-articles/issues'
 # TODO: Issues per_pages
-issues = requests.get(URL_REPO_ISSUES).json()
+# Get Issues no Pull Request
+issues = [issue for issue in requests.get(URL_REPO_ISSUES).json()
+          if issue.get('pull_request') is None]
 
 WORKFLOW_TEMPLATE = """
 name: Create Issues
@@ -31,8 +33,9 @@ jobs:
       shell: bash
       run: |
         pip install -r requirements.txt
-        python main.py
-        cp -f ciff.yml .github/workflows/
+        python build/main.py
+        cp -f build/ciff.yml .github/workflows/
+        rm -f build/ciff.yml
         git config --global user.name 'oleksis'
         git config --global user.email 'oleksis.fraga@gmail.com'
         git add .
@@ -44,7 +47,7 @@ jobs:
 
 """
 
-dir_issues = Path('issues')
+dir_issues = Path('build/issues')
 issues_files = []
 if not dir_issues.is_dir():
     dir_issues.mkdir()
