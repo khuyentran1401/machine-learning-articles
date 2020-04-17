@@ -34,8 +34,8 @@ jobs:
       run: |
         pip install -r requirements.txt
         python build/main.py
-        cp -f build/ciff.yml .github/workflows/
-        rm -f build/ciff.yml
+        cp -f ciff.yml .github/workflows/
+        rm -f ciff.yml
         git config --global user.name 'oleksis'
         git config --global user.email 'oleksis.fraga@gmail.com'
         git add .

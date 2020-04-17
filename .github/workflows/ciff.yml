@@ -21,8 +21,9 @@ jobs:
       shell: bash
       run: |
         pip install -r requirements.txt
-        python main.py
+        python build/main.py
         cp -f ciff.yml .github/workflows/
+        rm -f ciff.yml
         git config --global user.name 'oleksis'
         git config --global user.email 'oleksis.fraga@gmail.com'
         git add .
@@ -31,4 +32,3 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.ACTIONS_SECRET }}
-
