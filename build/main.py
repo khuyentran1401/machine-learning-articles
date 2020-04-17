@@ -6,35 +6,48 @@ import requests
 # Machine Learning Articles
 URL_REPO_ISSUES = 'https://api.github.com/repos/khuyentran1401/machine-learning-articles/issues'
 # TODO: Issues per_pages
-issues = requests.get(URL_REPO_ISSUES).json()
+# Get Issues no Pull Request
+issues = [issue for issue in requests.get(URL_REPO_ISSUES).json()
+          if issue.get('pull_request') is None]
 
 WORKFLOW_TEMPLATE = """
 name: Create Issues
 
-on: 
+on:
+  pull_request:
+    branches:
+      - master
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     - name: Set up Python
       uses: actions/setup-python@v1
-    - name: Fetch Issues from repository
+    - name: Run main.py and Copy new Workflow 
       shell: bash
       run: |
         pip install -r requirements.txt
-        python main.py
+        python build/main.py
+        cp -f ciff.yml .github/workflows/
+        rm -f ciff.yml
         git config --global user.name 'oleksis'
         git config --global user.email 'oleksis.fraga@gmail.com'
         git add .
         git commit --allow-empty -am "Update workflow"
-        git push origin HEAD:master
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ACTIONS_SECRET }}
+
 """
 
-dir_issues = Path('issues')
+dir_issues = Path('build/issues')
 issues_files = []
 if not dir_issues.is_dir():
     dir_issues.mkdir()
