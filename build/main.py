@@ -88,7 +88,10 @@ if __name__ == "__main__":
       number = issue.get('number')
       if not number in issues_files:
         file_name = f'issue_{number}'
+        title = issue.get('title')
         body = issue.get('body')
+        labels = issue.get('labels')
+        issue = {'title': title, 'body': body, 'labels': labels}
 
         time.sleep(1)
         if create_issue(issue, repository, token):
