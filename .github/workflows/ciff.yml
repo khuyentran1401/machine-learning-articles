@@ -21,14 +21,22 @@ jobs:
       shell: bash
       run: |
         pip install -r requirements.txt
+<<<<<<< HEAD
         python build/main.py -t '${GH_TOKEN}' -r '${GH_REPOSITORY}'
+=======
+        python build/main.py -t $GITHUB_TOKEN -r $GITHUB_REPOSITORY
+>>>>>>> 3b8e4259bd4342e84eac351d2064c7bca0082cc9
         git config --global user.name '${{ github.actor }}'
         git config --global user.email '${{ github.actor }}@users.noreply.github.com'
         git add .
         git commit --allow-empty -am "Update workflow"
       env:
+<<<<<<< HEAD
         GH_TOKEN: ${{ secrets.ACTIONS_SECRET }}
         GH_REPOSITORY: ${{ github.repository }}
+=======
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_SECRET }}
+>>>>>>> 3b8e4259bd4342e84eac351d2064c7bca0082cc9
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
