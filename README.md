@@ -72,8 +72,7 @@ To contribute a paper, please follow the format listed below:
      * Add a new secret:
        **ACTIONS_SECRET** : `<paste personal access token generated before>`
 
-4. Create one **pre-release: v0.1-alpha** (Create the Issues in issues folder and update ciff.yml workflow)
-5. Create final r**elease: v1.0.0** (Importar Issues to the repository)
+4. Create final r**elease: v1.0.0** (Importar Issues to the repository)
     * _**Optional**_ you can create one Project(machine-learning-articles/projects) named **Machine Learning Articles** (**To do** , **In progress**, **Done**) for manage the [Issues](https://github.com/oleksis/machine-learning-articles/projects/1)
 
 ### How to
