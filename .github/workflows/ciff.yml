@@ -17,17 +17,18 @@ jobs:
         persist-credentials: false
     - name: Set up Python
       uses: actions/setup-python@v1
-    - name: Run main.py and Copy new Workflow 
+    - name: Run main.py 
       shell: bash
       run: |
         pip install -r requirements.txt
-        python build/main.py
-        cp -f ciff.yml .github/workflows/
-        rm -f ciff.yml
-        git config --global user.name 'oleksis'
-        git config --global user.email 'oleksis.fraga@gmail.com'
+        python build/main.py -t '${GH_TOKEN}' -r '${GH_REPOSITORY}'
+        git config --global user.name '${{ github.actor }}'
+        git config --global user.email '${{ github.actor }}@users.noreply.github.com'
         git add .
         git commit --allow-empty -am "Update workflow"
+      env:
+        GH_TOKEN: ${{ secrets.ACTIONS_SECRET }}
+        GH_REPOSITORY: ${{ github.repository }}
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
