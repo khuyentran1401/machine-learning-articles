@@ -34,8 +34,8 @@ def get_issues(url_issues):
 def create_issue(issue, repository, token):
   URL_OWNER_ISSUES = f'https://api.github.com/repos/{repository}/issues'
 
-  headers = {'Authorization': f'token {token}'}
-  response = requests.post(URL_OWNER_ISSUES, data=issue, headers=headers)
+  headers = {'authorization': f'Bearer {token}', 'content-type': 'application/json'}
+  response = requests.post(URL_OWNER_ISSUES, json=issue, headers=headers)
 
   return response.status_code == 201
 
