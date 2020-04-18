@@ -37,11 +37,7 @@ def create_issue(issue, repository, token):
   headers = {'Authorization': f'token {token}'}
   response = requests.post(URL_OWNER_ISSUES, data=issue, headers=headers)
 
-<<<<<<< HEAD
   return response.status_code == 201
-=======
-  return response.status_code == 201:
->>>>>>> 3b8e4259bd4342e84eac351d2064c7bca0082cc9
 
 
 
@@ -53,34 +49,20 @@ if __name__ == "__main__":
   parser.add_argument(
     '-t',
     '--token',
-<<<<<<< HEAD
     metavar='GH_TOKEN',
     type=str,
     nargs='?',
     default=os.getenv('GH_TOKEN'),
-=======
-    metavar='GITHUB_TOKEN',
-    type=str,
-    nargs='?',
-    default=os.getenv('GITHUB_TOKEN'),
->>>>>>> 3b8e4259bd4342e84eac351d2064c7bca0082cc9
     help='Personal Access Token for create Issues'
   )
 
   parser.add_argument(
     '-r',
     '--repo',
-<<<<<<< HEAD
     metavar='GH_REPOSITORY',
     type=str,
     nargs='?',
     default=os.getenv('GH_REPOSITORY'),
-=======
-    metavar='GITHUB_REPOSITORY',
-    type=str,
-    nargs='?',
-    default=os.getenv('GITHUB_REPOSITORY),
->>>>>>> 3b8e4259bd4342e84eac351d2064c7bca0082cc9
     help='GitHub Owner Repository'
   )
 
