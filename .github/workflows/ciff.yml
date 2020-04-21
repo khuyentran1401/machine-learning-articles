@@ -18,7 +18,6 @@ jobs:
           python-version: 3.7
       - uses: actions/checkout@v2
         with:
-          ref: 'dev'
           persist-credentials: false
       - name: Install Requirements
         run: pip install -r requirements.txt
