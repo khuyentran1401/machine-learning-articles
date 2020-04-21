@@ -24,7 +24,7 @@ jobs:
       - name: Run build/main.py 
         shell: python
         run: |
-          from .build.main import main
+          from build.main import main
 
 
           token = os.getenv('GH_TOKEN')
