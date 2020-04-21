@@ -24,6 +24,11 @@ jobs:
       - name: Run build/main.py 
         shell: python
         run: |
+          import os, sys
+
+          GH_WORKSPACE = os.getenv('GITHUB_WORKSPACE')
+          sys.path.insert(0, GH_WORKSPACE) 
+          
           from build.main import main
 
 
