@@ -32,6 +32,7 @@ def get_issues(url_issues):
 
 
 def create_issue(issue, repository, token):
+  """Create Issue using API REST GitHub v3"""
   URL_OWNER_ISSUES = f'https://api.github.com/repos/{repository}/issues'
 
   headers = {'authorization': f'Bearer {token}', 'content-type': 'application/json'}
@@ -40,6 +41,41 @@ def create_issue(issue, repository, token):
   return response.status_code == 201
 
 
+def main(token, repository):
+  """Entry point main"""
+
+  if not token:
+    sys.exit('You need set the secrets.PAT')
+
+  if not repository:
+    sys.exit('You need set the GITHUB_REPOSITORY')
+  
+  issues = get_issues(URL_REPO_ISSUES)
+  dir_issues = Path('build/issues')
+  issues_files = []
+
+  if not dir_issues.is_dir():
+      dir_issues.mkdir()
+  else:
+      issues_files= [int(file.stem.split('_')[1])
+                    for file in Path().glob(f'{dir_issues}/issue_*.md')]
+
+  # Create issues .md in dir_issues
+  for issue in issues:
+      number = issue.get('number')
+      if not number in issues_files:
+        file_name = f'issue_{number}'
+        title = issue.get('title')
+        body = issue.get('body')
+        labels = issue.get('labels')
+        issue = {'title': title, 'body': body, 'labels': labels}
+
+        time.sleep(1)
+        if create_issue(issue, repository, token):
+          with open(f'{dir_issues}/{file_name}.md', 'w') as file_md:
+              file_md.write(body)
+        else:
+          sys.exit('Error Create Issue!!!')
 
 if __name__ == "__main__":
   parser = ArgumentParser(
@@ -68,34 +104,6 @@ if __name__ == "__main__":
 
   args = parser.parse_args()
   token = args.token
-
-  if not token:
-    sys.exit('You need pass the secrets.PAT')
-
   repository = args.repo
-  issues = get_issues(URL_REPO_ISSUES)
-  dir_issues = Path('build/issues')
-  issues_files = []
-
-  if not dir_issues.is_dir():
-      dir_issues.mkdir()
-  else:
-      issues_files= [int(file.stem.split('_')[1])
-                    for file in Path().glob(f'{dir_issues}/issue_*.md')]
-
-  # Create issues .md en dir_issues
-  for issue in issues:
-      number = issue.get('number')
-      if not number in issues_files:
-        file_name = f'issue_{number}'
-        title = issue.get('title')
-        body = issue.get('body')
-        labels = issue.get('labels')
-        issue = {'title': title, 'body': body, 'labels': labels}
-
-        time.sleep(1)
-        if create_issue(issue, repository, token):
-          with open(f'{dir_issues}/{file_name}.md', 'w') as file_md:
-              file_md.write(body)
-        else:
-          sys.exit('Error Create Issue!!!')
+  
+  main(token, repository)
