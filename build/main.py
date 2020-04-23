@@ -13,10 +13,18 @@ URL_REPO_ISSUES = 'https://api.github.com/repos/khuyentran1401/machine-learning-
 def get_issues(url_issues):
   """Get Issues per page. No Pull Request"""
 
+
   def get_resource(url_issue):
+    """Get Issues List if not Error"""
     response = requests.get(url_issue)
-    issues = [issue for issue in response.json()
-              if issue.get('pull_request') is None]
+    issues_json = response.json()
+
+    if isinstance(issues_json, list):
+      issues = [issue for issue in issues_json
+                if issue.get('pull_request') is None]
+    else:
+      issues = []
+    
     return issues, response.links.get('next')
 
 
@@ -32,11 +40,10 @@ def get_issues(url_issues):
 
 
 def create_issue(issue, repository, token):
-  """Create Issue using API REST GitHub v3"""
-  URL_OWNER_ISSUES = f'https://api.github.com/repos/{repository}/issues'
+  """Create Owner Issue using API REST GitHub v3"""
 
   headers = {'authorization': f'Bearer {token}', 'content-type': 'application/json'}
-  response = requests.post(URL_OWNER_ISSUES, json=issue, headers=headers)
+  response = requests.post(repository, json=issue, headers=headers)
 
   return response.status_code == 201
 
@@ -49,8 +56,12 @@ def main(token, repository):
 
   if not repository:
     sys.exit('You need set the GITHUB_REPOSITORY')
-  
-  issues = get_issues(URL_REPO_ISSUES)
+
+  URL_OWNER_ISSUES = f'https://api.github.com/repos/{repository}/issues'  
+  issues = get_issues(URL_REPO_ISSUES)  
+  issues_owner = get_issues(URL_OWNER_ISSUES)
+  issues_owner_title = [issue.get('title') for issue in issues_owner] 
+
   dir_issues = Path('build/issues')
   issues_files = []
 
@@ -63,7 +74,9 @@ def main(token, repository):
   # Create issues .md in dir_issues
   for issue in issues:
       number = issue.get('number')
-      if not number in issues_files:
+      has_title = issue.get('title') in issues_owner_title
+      # Issues number Origin is diferent in Fork. Check by title
+      if not has_title:
         file_name = f'issue_{number}'
         title = issue.get('title')
         body = issue.get('body')
@@ -71,7 +84,7 @@ def main(token, repository):
         issue = {'title': title, 'body': body, 'labels': labels}
 
         time.sleep(1)
-        if create_issue(issue, repository, token):
+        if create_issue(issue, URL_OWNER_ISSUES, token):
           with open(f'{dir_issues}/{file_name}.md', 'w') as file_md:
               file_md.write(body)
         else:
