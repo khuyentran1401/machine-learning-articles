@@ -60,19 +60,19 @@ To contribute a paper, please follow the format listed below:
 
     The steps 1 and 2 need be manual
 
-3. Check GitHub-App permissions on **.github/workflows** we need set **Personal Access Token** (PAT):
+3. We need set **Personal Access Token** (PAT):
     * **[Your Profile](https://github.com/settings/profile) -> Settings**
     * **Developers -> Personal access token**
     * Add new Token (copy for use in Secrets)
-      Make sure set the _**scopes**_: **repo, workflow**
-      Ex: Machine Learning Articles Access — repo, workflow
+      Make sure set the _**scopes**_: **repo**
+      Ex: Machine Learning Articles Access — repo
 
     3.1 Settings your Repo:
      * **Settings -> Secrets**
      * Add a new secret:
        **ACTIONS_SECRET** : `<paste personal access token generated before>`
 
-4. Create final r**elease: v1.0.0** (Importar Issues to the repository)
+4. Create final **release: v1.0.0** (Import Issues to the repository)
     * _**Optional**_ you can create one Project(machine-learning-articles/projects) named **Machine Learning Articles** (**To do** , **In progress**, **Done**) for manage the [Issues](https://github.com/oleksis/machine-learning-articles/projects/1)
 
 ### How to
