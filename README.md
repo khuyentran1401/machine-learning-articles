@@ -2,10 +2,9 @@
 
 ## About
 
-A repository for organizing different topics of machine learning articles in the form of Github's Issues. This idea is inspired by [this arXivTimes repository](https://github.com/yutarochan/arXivTimes) on summarizing machine learning papers
+A repository for organizing different topics of machine learning articles in the form of Github's Issues. This idea is inspired by [this arXivTimes repository](https://github.com/yutarochan/arXivTimes) on summarizing machine learning papers. The article of this repo can be found [here](https://towardsdatascience.com/how-to-organize-your-data-science-articles-with-github-b5b9427dad37?source=friends_link&sk=4dfb338164ad6e95809d943f0dc0578e)
 
-![image](https://github.com/khuyentran1401/machine-learning-articles/blob/master/images/Screenshot%202020-04-10%2013.15.39.png?raw=True). The article of this repo can be found [here](https://towardsdatascience.com/how-to-organize-your-data-science-articles-with-github-b5b9427dad37?source=friends_link&sk=4dfb338164ad6e95809d943f0dc0578e)
-
+![image](https://github.com/khuyentran1401/machine-learning-articles/blob/master/images/Screenshot%202020-04-10%2013.15.39.png?raw=True)
 ## Motivation
 
 Have you ever read an interesting article and want to keep it somewhere for future reference or share it with your friends? If you are successfully keeping it in a folder, it will be easily forgetten and hard to find that particular article in your pile of articles. 
