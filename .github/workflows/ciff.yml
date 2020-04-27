@@ -26,13 +26,14 @@ jobs:
           GH_WORKSPACE = os.getenv('GITHUB_WORKSPACE')
           sys.path.insert(0, GH_WORKSPACE) 
           
-          from build.main import main
+          from build.main import main, export_issues_html
 
 
           token = os.getenv('GH_TOKEN')
           repository = os.getenv('GH_REPOSITORY')
 
           main(token, repository)
+          export_issues_html()
 
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_SECRET }}
