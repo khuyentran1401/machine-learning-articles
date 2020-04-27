@@ -54,7 +54,7 @@ def export_issues_html(issues=get_issues(URL_REPO_ISSUES)):
   """Create index.html from API Issues URL"""
   #import json
 
-  url_repository = "https://api.github.com/repos/khuyentran1401/machine-learning-articles"
+  url_repository = URL_REPO_ISSUES.rsplit('/', 1)[-2]
 
   if len(issues) > 0:
     url_repository = issues[0].get('repository_url')
