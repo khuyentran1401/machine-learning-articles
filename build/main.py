@@ -54,15 +54,15 @@ def export_issues_html(issues=get_issues(URL_REPO_ISSUES)):
   """Create index.html from API Issues URL"""
   #import json
 
-  url_issues = "https://api.github.com/repos/khuyentran1401/machine-learning-articles/isuess"
+  url_repository = "https://api.github.com/repos/khuyentran1401/machine-learning-articles"
 
   if len(issues) > 0:
-    url_issues = issues[0].get('repository_url')
+    url_repository = issues[0].get('repository_url')
   
 
   def get_label_template(label):
     """Label template HTML"""
-    url_split = url_issues.split('/', 4)
+    url_split = url_repository.split('/', 4)
 
     label_name = label.get('name')
 
@@ -71,7 +71,7 @@ def export_issues_html(issues=get_issues(URL_REPO_ISSUES)):
     else:
       quote_label = quote_plus(f'{label_name}')
 
-    url_issue = (f"https://github.com/{url_split[-1]}"  
+    url_issue = (f"https://github.com/{url_split[-1]}/issues/"  
                  f"?q=is%3Aissue+is%3Aopen+label%3A{quote_label}")
     
     return (f"""<span class="labels lh-default d-block d-md-inline">"""
