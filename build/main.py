@@ -4,7 +4,9 @@
 from argparse import ArgumentParser
 import os, sys
 from pathlib import Path
+from string import Template
 import time
+from urllib.parse import quote_plus
 import requests
 
 # Machine Learning Articles
@@ -46,6 +48,80 @@ def create_issue(issue, repository, token):
   response = requests.post(repository, json=issue, headers=headers)
 
   return response.status_code == 201
+
+
+def export_issues_html(issues=get_issues(URL_REPO_ISSUES)):
+  """Create index.html from API Issues URL"""
+  #import json
+
+  url_issues = "https://api.github.com/repos/khuyentran1401/machine-learning-articles/isuess"
+
+  if len(issues) > 0:
+    url_issues = issues[0].get('repository_url')
+  
+
+  def get_label_template(label):
+    """Label template HTML"""
+    url_split = url_issues.split('/', 4)
+
+    label_name = label.get('name')
+
+    if " " in label_name:
+      quote_label = quote_plus(f'"{label_name}"')
+    else:
+      quote_label = quote_plus(f'{label_name}')
+
+    url_issue = (f"https://github.com/{url_split[-1]}"  
+                 f"?q=is%3Aissue+is%3Aopen+label%3A{quote_label}")
+    
+    return (f"""<span class="labels lh-default d-block d-md-inline">"""
+            f"""<a class="d-inline-block IssueLabel" style="background-color: #{label.get('color')}; """
+            f"""color: #000000" href="{url_issue}" title="{label_name}">{label_name}</a></span>""")
+
+  def get_author_template(user):
+    """Author template HTML"""
+    return (f"""<a title="Create by {user.get('login')}" href="https://github.com/{user.get('login')}">"""
+            f"""<img class="avatar avatar-user" src="{user.get('avatar_url')}" width="20" height="20" """
+            f"""alt="@{user.get('login')}">{user.get('login')}</a>""")
+
+  def get_title_template(issue):
+      """Issue Title template HTML"""
+      return f"""<a href="{issue.get('html_url')}">{issue.get('title')}</a>"""
+
+
+  tpl = ""
+  #with open('build/issues.json', 'r') as file:
+  #  issues = json.load(file)
+
+  with open('build/index.tpl', 'r') as file:
+    tpl = file.read()
+
+  index_template = Template(tpl)
+
+  rows_issues = ""
+  gh_repository = os.getenv('GH_REPOSITORY')
+
+  if gh_repository:
+    gh_repository = gh_repository.split('/')[-1]
+  else:
+    gh_repository = 'machine-learning-articles'
+
+  gh_repository_description = os.getenv('GH_REPOSITORY_DESCRIPTION')
+
+  if not gh_repository_description:
+    gh_repository_description = ("List of interesting articles on different topics"
+                                 " of machine learning and deep learning")
+
+  for issue in issues:
+    title = get_title_template(issue)
+    labels = " ".join([get_label_template(label) for label in issue.get('labels')])
+    author = get_author_template(issue.get('user'))
+    rows_issues += f"<tr><td>{title}</td><td>{labels}</td><td>{author}</td></tr>\n\t\t\t\t"
+
+  with open('index.html', 'w') as file:
+    file.write(index_template.substitute(GH_REPOSITORY_DESCRIPTION=gh_repository_description,
+                                         GH_REPOSITORY=gh_repository,
+                                         ROWS_ISSUES=rows_issues))
 
 
 def main(token, repository):
