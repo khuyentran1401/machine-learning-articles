@@ -2,21 +2,25 @@
 # coding: utf-8
 
 from argparse import ArgumentParser
-import os, sys
+import os
+import sys
 from pathlib import Path
 from string import Template
 import time
 from urllib.parse import quote_plus
+from typing import Optional, List, Dict, Tuple, Any
 import requests
 
+ISSUE = Optional[Dict[str, Any]]
+IsuesListOpt = Optional[List[ISSUE]]
 # Machine Learning Articles
 URL_REPO_ISSUES = 'https://api.github.com/repos/khuyentran1401/machine-learning-articles/issues'
 
-def get_issues(url_issues):
+
+def get_issues(url_issues: str) -> IsuesListOpt:
   """Get Issues per page. No Pull Request"""
 
-
-  def get_resource(url_issue):
+  def get_resource(url_issue: str) -> Tuple[ISSUE, bool]:
     """Get Issues List if not Error"""
     response = requests.get(url_issue)
     issues_json = response.json()
@@ -26,9 +30,8 @@ def get_issues(url_issues):
                 if issue.get('pull_request') is None]
     else:
       issues = []
-    
-    return issues, response.links.get('next')
 
+    return issues, response.links.get('next')
 
   issues, _next = get_resource(url_issues)
 
@@ -41,7 +44,7 @@ def get_issues(url_issues):
   return issues
 
 
-def create_issue(issue, repository, token):
+def create_issue(issue: ISSUE, repository: str, token: str) -> int:
   """Create Owner Issue using API REST GitHub v3"""
 
   headers = {'authorization': f'Bearer {token}', 'content-type': 'application/json'}
@@ -50,48 +53,48 @@ def create_issue(issue, repository, token):
   return response.status_code == 201
 
 
-def export_issues_html(issues=get_issues(URL_REPO_ISSUES)):
+def export_issues_html(issues=get_issues(URL_REPO_ISSUES)) -> None:
   """Create index.html from API Issues URL"""
-  #import json
+  # import json
 
   url_repository = URL_REPO_ISSUES.rsplit('/', 1)[-2]
 
   if len(issues) > 0:
     url_repository = issues[0].get('repository_url')
-  
 
-  def get_label_template(label):
+  def get_label_template(label: Optional[Dict[str, Any]]) -> str:
     """Label template HTML"""
     url_split = url_repository.split('/', 4)
+    label_name = ""
 
-    label_name = label.get('name')
+    if label is not None:
+      label_name = label.get('name')
 
     if " " in label_name:
       quote_label = quote_plus(f'"{label_name}"')
     else:
       quote_label = quote_plus(f'{label_name}')
 
-    url_issue = (f"https://github.com/{url_split[-1]}/issues/"  
+    url_issue = (f"https://github.com/{url_split[-1]}/issues/"
                  f"?q=is%3Aissue+is%3Aopen+label%3A{quote_label}")
-    
+
     return (f"""<span class="labels lh-default d-block d-md-inline">"""
             f"""<a class="d-inline-block IssueLabel" style="background-color: #{label.get('color')}; """
             f"""color: #000000" href="{url_issue}" title="{label_name}">{label_name}</a></span>""")
 
-  def get_author_template(user):
+  def get_author_template(user: Dict[str, Any]) -> str:
     """Author template HTML"""
     return (f"""<a title="Create by {user.get('login')}" href="https://github.com/{user.get('login')}">"""
             f"""<img class="avatar avatar-user" src="{user.get('avatar_url')}" width="20" height="20" """
             f"""alt="@{user.get('login')}">{user.get('login')}</a>""")
 
-  def get_title_template(issue):
+  def get_title_template(issue: Dict[str, Any]) -> str:
       """Issue Title template HTML"""
       return f"""<a href="{issue.get('html_url')}">{issue.get('title')}</a>"""
 
-
   tpl = ""
-  #with open('build/issues.json', 'r') as file:
-  #  issues = json.load(file)
+  # with open('build/issues.json', 'r') as file:
+  #   issues = json.load(file)
 
   with open('build/index.tpl', 'r') as file:
     tpl = file.read()
@@ -124,7 +127,7 @@ def export_issues_html(issues=get_issues(URL_REPO_ISSUES)):
                                          ROWS_ISSUES=rows_issues))
 
 
-def main(token, repository):
+def main(token: str, repository: str) -> None:
   """Entry point main"""
 
   if not token:
@@ -133,19 +136,15 @@ def main(token, repository):
   if not repository:
     sys.exit('You need set the GITHUB_REPOSITORY')
 
-  URL_OWNER_ISSUES = f'https://api.github.com/repos/{repository}/issues'  
-  issues = get_issues(URL_REPO_ISSUES)  
+  URL_OWNER_ISSUES = f'https://api.github.com/repos/{repository}/issues'
+  issues = get_issues(URL_REPO_ISSUES)
   issues_owner = get_issues(URL_OWNER_ISSUES)
-  issues_owner_title = [issue.get('title') for issue in issues_owner] 
+  issues_owner_title = [issue.get('title') for issue in issues_owner]
 
   dir_issues = Path('build/issues')
-  issues_files = []
 
   if not dir_issues.is_dir():
       dir_issues.mkdir()
-  else:
-      issues_files= [int(file.stem.split('_')[1])
-                    for file in Path().glob(f'{dir_issues}/issue_*.md')]
 
   # Create issues .md in dir_issues
   for issue in issues:
@@ -165,6 +164,7 @@ def main(token, repository):
               file_md.write(body)
         else:
           sys.exit('Error Create Issue!!!')
+
 
 if __name__ == "__main__":
   parser = ArgumentParser(
@@ -194,5 +194,4 @@ if __name__ == "__main__":
   args = parser.parse_args()
   token = args.token
   repository = args.repo
-  
   main(token, repository)
