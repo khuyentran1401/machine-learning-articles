@@ -1,5 +1,5 @@
 ## TL;DR
-Use Cthon for speed up Python code
+Use Cython for speed up Python code
 ### Article Link
 https://levelup.gitconnected.com/this-one-trick-can-make-your-code-17-times-more-efficient-e65769006dfa
 ## Useful Code Snippets
