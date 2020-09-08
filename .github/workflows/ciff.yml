@@ -2,6 +2,7 @@
 name: Create Issues
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
